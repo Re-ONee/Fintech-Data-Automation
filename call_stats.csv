@@ -1,0 +1,7 @@
+Agent_Name,Calls_Handled,CSAT_Score,Average_Handle_Time
+Ahmed,45,92,310
+Mona,38,88,420
+John,52,95,290
+Sara,30,75,500
+Omar,41,90,330
+FakeAgent, 100,100,10
