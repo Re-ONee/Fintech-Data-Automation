@@ -1,17 +1,17 @@
-import pandas as pd
-import subprocess
-import os
+from sklearn.linear_model import LinearRegression
+import numpy as np
 
-# 1. Decrypt the file temporarily using GPG
-# In a real setup, you'd use a key, but for now, we use a command
-print("Decrypting secure data...")
-subprocess.run(["gpg", "--decrypt", "--output", "temp_stats.csv", "call_stats.csv.gpg"])
+# 1. Prepare historical data (e.g., Weeks 1, 2, 3, 4)
+# Let's say Ahmed's scores were: 88, 89, 91, 92
+weeks = np.array([1, 2, 3, 4]).reshape(-1, 1)
+scores = np.array([88, 89, 91, 92])
 
-# 2. Load the data
-df = pd.read_csv('temp_stats.csv')
+# 2. Build the Model
+model = LinearRegression()
+model.fit(weeks, scores)
 
-# ... (rest of your analysis code here) ...
+# 3. Predict Week 5
+prediction = model.predict([[5]])
 
-# 3. CRITICAL: Delete the temporary plain-text file after use
-os.remove('temp_stats.csv')
-print("Secure cleanup complete.")
+print(f"--- PREDICTIVE INSIGHTS ---")
+print(f"Ahmed's predicted score for next week: {prediction[0]:.2f}%")
